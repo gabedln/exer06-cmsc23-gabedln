@@ -138,19 +138,19 @@ class ContactPage extends StatelessWidget {
         final c = snap.data;
         String info = "";
 
-        if (c!.name?.first != null && (c.name!.last?.isNotEmpty ?? false)) {
-          info += "📖 First name: ${c.name!.first}\n"; // checks for validation
+        if (c?.name?.first != null && (c?.name?.last?.isNotEmpty ?? false)) {
+          info += "📖 First name: ${c?.name?.first}\n"; // checks for validation
         }
 
-        if (c.name?.last != null && (c.name!.last?.isNotEmpty ?? false)) {
-          info += "📖 Last name: ${c.name!.last}\n";
+        if (c?.name?.last != null && (c?.name?.last?.isNotEmpty ?? false)) {
+          info += "📖 Last name: ${c?.name?.last}\n";
         }
-        if (c.phones.isNotEmpty) {
-          info += "📲 Phone number: ${c.phones.first.number}\n";
+        if (c?.phones.isNotEmpty ?? false) {
+          info += "📲 Phone number: ${c?.phones.first.number}\n";
         }
 
-        if (c.emails.isNotEmpty) {
-          info += "📧 Email address: ${c.emails.first.address}\n";
+        if (c?.emails.isNotEmpty ?? false) {
+          info += "📧 Email address: ${c?.emails.first.address}\n";
         }
         return Scaffold(
           backgroundColor: Color.fromARGB(255, 195, 220, 240),
