@@ -94,19 +94,24 @@ class _ContactListPageState extends State<ContactListPage> {
             // else, if not denied and contacts not empty, creats listView
             itemCount: _contacts!.length,
             itemBuilder: (_, i) {
-              final c = _contacts![i];
+              final c =
+                  _contacts![i]; // builds contacts view, iterates through contact list
               return ListTile(
                 leading: const Icon(Icons.person_2_rounded, size: 40),
                 title: Text(
-                  c.displayName ?? '(No name)',
+                  c.displayName ??
+                      '(No name)', // if doesn't have a name shows no name
                   style: TextStyle(fontWeight: .bold, fontSize: 18),
                 ),
-                onTap: () => _open(ContactPage(id: c.id!)),
+                onTap: () =>
+                    _open(ContactPage(id: c.id!)), // on tap opens contact page
               );
             },
           ),
     floatingActionButton: FloatingActionButton(
-      child: const Icon(Icons.contacts),
+      child: const Icon(
+        Icons.contacts,
+      ), // floating action button to add contact
       onPressed: () => _open(const EditContactPage()),
     ),
   );
@@ -134,7 +139,7 @@ class ContactPage extends StatelessWidget {
         String info = "";
 
         if (c!.name?.first != null && (c.name!.last?.isNotEmpty ?? false)) {
-          info += "📖 First name: ${c.name!.first}\n";
+          info += "📖 First name: ${c.name!.first}\n"; // checks for validation
         }
 
         if (c.name?.last != null && (c.name!.last?.isNotEmpty ?? false)) {
