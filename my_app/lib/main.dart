@@ -204,6 +204,7 @@ class ContactPage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       FlutterContacts.delete(id);
+                      _load();
                       Navigator.pop(context);
                     },
                     child: Text("Delete Contact"),
