@@ -138,7 +138,7 @@ class ContactPage extends StatelessWidget {
         final c = snap.data;
         String info = "";
 
-        if (c?.name?.first != null && (c?.name?.last?.isNotEmpty ?? false)) {
+        if (c?.name?.first != null && (c?.name?.first?.isNotEmpty ?? false)) {
           info += "📖 First name: ${c?.name?.first}\n"; // checks for validation
         }
 
@@ -165,7 +165,6 @@ class ContactPage extends StatelessWidget {
             ),
           ),
           body: SafeArea(
-            // puts the summary from AddEntry screen and puts it in the body of this screen
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: .start,
@@ -207,10 +206,11 @@ class ContactPage extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      FlutterContacts.delete(id);
-                      _load();
-                      Navigator.pop(context);
+                    onPressed: () async {
+                      await FlutterContacts.delete(id);
+                      if (context.mounted) {
+                        Navigator.pop(context);
+                      }
                     },
                     child: Text("Delete Contact"),
                   ),
